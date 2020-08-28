@@ -28,8 +28,8 @@ class Render(BaseEstimator, TransformerMixin):
     def transform(self, X):
         # Primeiro realizamos a cópia do dataframe 'X' de entrada
         data = X.copy()
-        df_majority = data[data.OBJETIVO=='Aceptado']
-        df_minority = data[data.OBJETIVO=='Sospechoso']
+        df_majority = data[data['OBJETIVO']=='Aceptado']
+        df_minority = data[data['OBJETIVO']=='Sospechoso']
         df_minority_upsampled = resample(df_minority, 
                                  replace=True,     # sample with replacement
                                  n_samples=8873,    # to match majority class
