@@ -14,3 +14,11 @@ class DropColumns(BaseEstimator, TransformerMixin):
         data = X.copy()
         # Retornamos um novo dataframe sem as colunas indesejadas
         return data.drop(labels=self.columns, axis='columns')
+    
+    
+def drop_nans(X, y=None):
+    df = pd.DataFrame(X)
+    df.dropna(how='any',axis=0)
+    return df.values
+
+
