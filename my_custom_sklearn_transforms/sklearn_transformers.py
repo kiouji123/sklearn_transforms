@@ -29,4 +29,4 @@ class DropRow(BaseEstimator, TransformerMixin):
         # Primeiro realizamos a cópia do dataframe 'X' de entrada
         data = X.copy()
         # Retornamos um novo dataframe sem as colunas indesejadas
-        return data.dropna(how='any',axis=0)
+        return data.dropna(how='any',axis=numero)
