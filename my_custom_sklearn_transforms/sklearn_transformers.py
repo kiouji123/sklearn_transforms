@@ -17,9 +17,16 @@ class DropColumns(BaseEstimator, TransformerMixin):
         return data.drop(labels=self.columns, axis='columns')
     
     
-def drop_nans(X, y=None):
-    df = pd.DataFrame(X)
-    df.dropna(how='any',axis=0)
-    return df.values
 
+class DropRow(BaseEstimator, TransformerMixin):
+    def __init__(self, columns):
+        return self
 
+    def fit(self, X, y=None):
+        return self
+
+    def transform(self, X):
+        # Primeiro realizamos a cópia do dataframe 'X' de entrada
+        data = X.copy()
+        # Retornamos um novo dataframe sem as colunas indesejadas
+        return data.dropna(how='any',axis=0)
