@@ -20,7 +20,7 @@ class DropColumns(BaseEstimator, TransformerMixin):
 
 class DropRow(BaseEstimator, TransformerMixin):
     def __init__(self):
-        return self
+        return None
 
     def fit(self, X, y=None):
         return self
