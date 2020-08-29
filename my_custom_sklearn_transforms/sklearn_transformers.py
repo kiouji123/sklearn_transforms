@@ -19,15 +19,15 @@ class DropColumns(BaseEstimator, TransformerMixin):
 
 # All sklearn Transforms must have the `transform` and `fit` methods
 class Render(BaseEstimator, TransformerMixin):
-    def __init__(self, col):
-        self.col = col
+    def __init__(self, df):
+        self.df = df
 
     def fit(self, X, y=None):
         return self
 
     def transform(self, X):
         # Primeiro realizamos a cópia do dataframe 'X' de entrada
-        data = X.copy()
+        data = self.df.copy()
         df_majority = data[data.OBJETIVO=='Aceptado']
         df_minority = data[data.OBJETIVO=='Sospechoso']
         df_minority_upsampled = resample(df_minority, 
